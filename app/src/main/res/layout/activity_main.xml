@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/line_center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.382" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/line_center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.382" />
+
+    <ScrollView
+        android:id="@+id/sv_log"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@id/line_center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_log"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:clickable="false"
+            android:focusable="false"
+            android:textColor="@android:color/white"
+            tools:text="adb logcat -help" />
+
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/holo_blue_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/line_center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/line_center_horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <xyz.zxmo.test.touch_event.RadioGroupView
+                android:id="@+id/activity_dispatch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="Activity分发"
+                app:whichChecked="checkSuper" />
+
+            <xyz.zxmo.test.touch_event.RadioGroupView
+                android:id="@+id/view_group_dispatch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="ViewGroup分发"
+                app:whichChecked="checkSuper" />
+
+            <xyz.zxmo.test.touch_event.RadioGroupView
+                android:id="@+id/view_group_intercept"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="ViewGroup拦截"
+                app:whichChecked="checkSuper" />
+
+
+            <xyz.zxmo.test.touch_event.RadioGroupView
+                android:id="@+id/view_dispatch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="View分发"
+                app:whichChecked="checkSuper" />
+
+            <xyz.zxmo.test.touch_event.RadioGroupView
+                android:id="@+id/view_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="View事件"
+                app:whichChecked="checkSuper" />
+
+            <xyz.zxmo.test.touch_event.RadioGroupView
+                android:id="@+id/view_group_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="ViewGroup事件"
+                app:whichChecked="checkSuper" />
+
+            <xyz.zxmo.test.touch_event.RadioGroupView
+                android:id="@+id/activity_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="Activity事件"
+                app:whichChecked="checkSuper" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        android:text="Activity"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@id/viewGroup"
+        app:layout_constraintEnd_toStartOf="@id/line_center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line_center_horizontal" />
+
+    <xyz.zxmo.test.touch_event.CustomViewGroup
+        android:id="@+id/viewGroup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="40dp"
+        android:background="@color/colorPrimary"
+        android:translationZ="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/line_center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line_center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:focusable="false"
+            android:text="ViewGroup"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <xyz.zxmo.test.touch_event.CustomView
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="View"
+            android:textColor="@android:color/black"
+            android:translationZ="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </xyz.zxmo.test.touch_event.CustomViewGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

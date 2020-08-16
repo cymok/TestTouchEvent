@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+
+    <declare-styleable name="RadioGroupView">
+        <attr name="title" format="string"/>
+        <attr name="whichChecked" format="enum" >
+            <enum name="checkSuper" value="0"/>
+            <enum name="checkTrue" value="1"/>
+            <enum name="checkFalse" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>
