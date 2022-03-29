@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.sendLog(MainActivity.this, TAG, "setOnClickListener: click");
+                MainActivity.sendLog(MainActivity.this, TAG, "view.setOnClickListener: click");
             }
         });
 
@@ -43,13 +43,13 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        MainActivity.sendLog(MainActivity.this, TAG, "setOnTouchListener: down");
+                        MainActivity.sendLog(MainActivity.this, TAG, "view.setOnTouchListener: down");
                         break;
                     case MotionEvent.ACTION_MOVE:
-                        MainActivity.sendLog(MainActivity.this, TAG, "setOnTouchListener:  move");
+                        MainActivity.sendLog(MainActivity.this, TAG, "view.setOnTouchListener:  move");
                         break;
                     case MotionEvent.ACTION_UP:
-                        MainActivity.sendLog(MainActivity.this, TAG, "setOnTouchListener: up");
+                        MainActivity.sendLog(MainActivity.this, TAG, "view.setOnTouchListener: up");
                         break;
                     default:
                 }
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        IntentFilter filter = new IntentFilter(getPackageName() + "log");
+        IntentFilter filter = new IntentFilter(getPackageName() + ".log");
         LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, filter);
     }
 
@@ -77,6 +77,10 @@ public class MainActivity extends AppCompatActivity {
             String log = intent.getStringExtra("log");
             if (TextUtils.isEmpty(log)) {
                 return;
+            }
+            // 每次流程开始前清空日志
+            if (log != null && log.contains("START")) {
+                textView.setText(null);
             }
             String string = textView.getText().toString();
             if (!TextUtils.isEmpty(string)) {
@@ -99,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            MainActivity.sendLog(this, TAG, "--- 流程开始 ---");
+            MainActivity.sendLog(this, TAG, "--- START ---");
         }
 
         switch (event.getAction()) {
@@ -127,11 +131,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void sendLog(Context context, String tag, String log) {
-//        Log.e(tag, log);
+//        Log.d(tag, log);
 
         //测试设备没有root权限 不能直接通过adb获取logcat内容
 
-        Intent intent = new Intent(context.getPackageName() + "log");
+        Intent intent = new Intent(context.getPackageName() + ".log");
         intent.putExtra("log", tag + ": " + log);
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }

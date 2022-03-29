@@ -60,21 +60,21 @@
                 android:id="@+id/activity_dispatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="Activity分发"
+                app:title="Activity.dispatchTouchEvent"
                 app:whichChecked="checkSuper" />
 
             <xyz.zxmo.test.touch_event.RadioGroupView
                 android:id="@+id/view_group_dispatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="ViewGroup分发"
+                app:title="ViewGroup.dispatchTouchEvent"
                 app:whichChecked="checkSuper" />
 
             <xyz.zxmo.test.touch_event.RadioGroupView
                 android:id="@+id/view_group_intercept"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="ViewGroup拦截"
+                app:title="ViewGroup.onInterceptTouchEvent"
                 app:whichChecked="checkSuper" />
 
 
@@ -82,28 +82,28 @@
                 android:id="@+id/view_dispatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="View分发"
+                app:title="View.dispatchTouchEvent"
                 app:whichChecked="checkSuper" />
 
             <xyz.zxmo.test.touch_event.RadioGroupView
                 android:id="@+id/view_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="View事件"
+                app:title="View.onTouchEvent"
                 app:whichChecked="checkSuper" />
 
             <xyz.zxmo.test.touch_event.RadioGroupView
                 android:id="@+id/view_group_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="ViewGroup事件"
+                app:title="ViewGroup.onTouchEvent"
                 app:whichChecked="checkSuper" />
 
             <xyz.zxmo.test.touch_event.RadioGroupView
                 android:id="@+id/activity_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="Activity事件"
+                app:title="Activity.onTouchEvent"
                 app:whichChecked="checkSuper" />
 
         </LinearLayout>
