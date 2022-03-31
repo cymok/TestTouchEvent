@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "Activity";
 
     public static class ViewHolder {
 

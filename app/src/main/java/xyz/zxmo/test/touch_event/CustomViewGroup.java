@@ -112,5 +112,5 @@ public class CustomViewGroup extends ConstraintLayout {
         }
     }
 
-    private static final String TAG = "CustomViewGroup";
+    private static final String TAG = "ViewGroup";
 }

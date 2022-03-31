@@ -88,5 +88,5 @@ public class CustomView extends TextView {
         }
     }
 
-    private static final String TAG = "CustomView";
+    private static final String TAG = "View";
 }
