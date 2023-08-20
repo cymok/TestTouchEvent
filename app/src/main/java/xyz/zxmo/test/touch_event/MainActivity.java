@@ -55,7 +55,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // Activity 里 View.setOnTouchListener 严格来说不属于事件传递机制里, 只是在传递过程插入一个监听函数,
                 // 但是可以返回 true 表示消费了, View 的 onTouchEvent 就不会收到事件
-                return false;
+                int checked = mViewHolder.viewEventListener.isChecked();
+                if (checked == RadioGroupView.ITEM_TRUE) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
         });
 
@@ -121,9 +126,9 @@ public class MainActivity extends AppCompatActivity {
 //        return super.dispatchTouchEvent(event);
 
         int checked = this.mViewHolder.activityDispatch.isChecked();
-        if (checked == RadioGroupView.CHECK_TRUE) {
+        if (checked == RadioGroupView.ITEM_TRUE) {
             return true;
-        } else if (checked == RadioGroupView.CHECK_FALSE) {
+        } else if (checked == RadioGroupView.ITEM_FALSE) {
             return false;
         } else {
             return super.dispatchTouchEvent(event);
@@ -160,9 +165,9 @@ public class MainActivity extends AppCompatActivity {
 //        return super.onTouchEvent(event);
 
         int checked = this.mViewHolder.activityEvent.isChecked();
-        if (checked == RadioGroupView.CHECK_TRUE) {
+        if (checked == RadioGroupView.ITEM_TRUE) {
             return true;
-        } else if (checked == RadioGroupView.CHECK_FALSE) {
+        } else if (checked == RadioGroupView.ITEM_FALSE) {
             return false;
         } else {
             return super.onTouchEvent(event);
@@ -180,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
         RadioGroupView viewEvent;
         RadioGroupView viewGroupEvent;
         RadioGroupView activityEvent;
+        RadioGroupView viewEventListener;
 
         public ViewHolder(MainActivity activity) {
 
@@ -190,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
             viewEvent = activity.findViewById(R.id.view_event);
             viewGroupEvent = activity.findViewById(R.id.view_group_event);
             activityEvent = activity.findViewById(R.id.activity_event);
+            viewEventListener = activity.findViewById(R.id.view_event_listener);
 
         }
     }

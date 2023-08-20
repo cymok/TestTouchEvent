@@ -48,9 +48,9 @@ public class CustomView extends TextView {
 
         MainActivity activity = (MainActivity) getContext();
         int checked = activity.mViewHolder.viewDispatch.isChecked();
-        if (checked == RadioGroupView.CHECK_TRUE) {
+        if (checked == RadioGroupView.ITEM_TRUE) {
             return true;
-        } else if (checked == RadioGroupView.CHECK_FALSE) {
+        } else if (checked == RadioGroupView.ITEM_FALSE) {
             return false;
         } else {
             return super.dispatchTouchEvent(event);
@@ -79,9 +79,9 @@ public class CustomView extends TextView {
 
         MainActivity activity = (MainActivity) getContext();
         int checked = activity.mViewHolder.viewEvent.isChecked();
-        if (checked == RadioGroupView.CHECK_TRUE) {
+        if (checked == RadioGroupView.ITEM_TRUE) {
             return true;
-        } else if (checked == RadioGroupView.CHECK_FALSE) {
+        } else if (checked == RadioGroupView.ITEM_FALSE) {
             return false;
         } else {
             return super.onTouchEvent(event);

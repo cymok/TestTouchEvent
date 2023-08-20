@@ -60,6 +60,7 @@
                 android:id="@+id/activity_dispatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:defaultItem="defaultSuper"
                 app:title="Activity.dispatchTouchEvent"
                 app:whichChecked="checkSuper" />
 
@@ -67,6 +68,7 @@
                 android:id="@+id/view_group_dispatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:defaultItem="defaultSuper"
                 app:title="ViewGroup.dispatchTouchEvent"
                 app:whichChecked="checkSuper" />
 
@@ -74,21 +76,32 @@
                 android:id="@+id/view_group_intercept"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:defaultItem="defaultFalse"
                 app:title="ViewGroup.onInterceptTouchEvent"
                 app:whichChecked="checkSuper" />
-
 
             <xyz.zxmo.test.touch_event.RadioGroupView
                 android:id="@+id/view_dispatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:defaultItem="defaultSuper"
                 app:title="View.dispatchTouchEvent"
                 app:whichChecked="checkSuper" />
+
+            <xyz.zxmo.test.touch_event.RadioGroupView
+                android:id="@+id/view_event_listener"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:defaultItem="defaultFalse"
+                app:hideSuper="true"
+                app:title="View.setOnTouchListener"
+                app:whichChecked="checkFalse" />
 
             <xyz.zxmo.test.touch_event.RadioGroupView
                 android:id="@+id/view_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:defaultItem="defaultTrue"
                 app:title="View.onTouchEvent"
                 app:whichChecked="checkSuper" />
 
@@ -96,6 +109,7 @@
                 android:id="@+id/view_group_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:defaultItem="defaultFalse"
                 app:title="ViewGroup.onTouchEvent"
                 app:whichChecked="checkSuper" />
 
@@ -103,6 +117,7 @@
                 android:id="@+id/activity_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:defaultItem="defaultFalse"
                 app:title="Activity.onTouchEvent"
                 app:whichChecked="checkSuper" />
 

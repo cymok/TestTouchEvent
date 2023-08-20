@@ -2,6 +2,7 @@ package xyz.zxmo.test.touch_event;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RadioButton;
@@ -15,17 +16,17 @@ import java.lang.annotation.RetentionPolicy;
 
 public class RadioGroupView extends ConstraintLayout {
 
-    public static final int CHECK_SUPER = 0;
-    public static final int CHECK_TRUE = 1;
-    public static final int CHECK_FALSE = 2;
+    public static final int ITEM_SUPER = 0;
+    public static final int ITEM_TRUE = 1;
+    public static final int ITEM_FALSE = 2;
 
     private RadioButton rbSuper;
     private RadioButton rbTrue;
     private RadioButton rbFalse;
 
     @Retention(RetentionPolicy.RUNTIME)
-    @IntDef({CHECK_SUPER, CHECK_TRUE, CHECK_FALSE})
-    public @interface WHICH_CHECKED {
+    @IntDef({ITEM_SUPER, ITEM_TRUE, ITEM_FALSE})
+    public @interface WHICH_ITEM {
     }
 
     public RadioGroupView(Context context) {
@@ -48,6 +49,8 @@ public class RadioGroupView extends ConstraintLayout {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RadioGroupView);
         String title = typedArray.getString(R.styleable.RadioGroupView_title);
         int whichChecked = typedArray.getInt(R.styleable.RadioGroupView_whichChecked, -1);
+        int defaultItem = typedArray.getInt(R.styleable.RadioGroupView_defaultItem, -1);
+        boolean hideSuper = typedArray.getBoolean(R.styleable.RadioGroupView_hideSuper, false);
         typedArray.recycle();
 
         ((TextView) findViewById(R.id.tv_title)).setText(title);
@@ -59,17 +62,28 @@ public class RadioGroupView extends ConstraintLayout {
 
         setChecked(whichChecked);
 
+        if (defaultItem == ITEM_TRUE) {
+            rbTrue.setTextColor(Color.BLUE);
+        } else if (defaultItem == ITEM_FALSE) {
+            rbFalse.setTextColor(Color.BLUE);
+        } else if(defaultItem == ITEM_SUPER) {
+            rbSuper.setTextColor(Color.BLUE);
+        }
+
+        if (hideSuper) {
+            rbSuper.setVisibility(View.INVISIBLE);
+        }
     }
 
-    public void setChecked(@WHICH_CHECKED int whichChecked) {
+    public void setChecked(@WHICH_ITEM int whichChecked) {
         switch (whichChecked) {
-            case CHECK_SUPER:
+            case ITEM_SUPER:
                 rbSuper.setChecked(true);
                 break;
-            case CHECK_TRUE:
+            case ITEM_TRUE:
                 rbTrue.setChecked(true);
                 break;
-            case CHECK_FALSE:
+            case ITEM_FALSE:
                 rbFalse.setChecked(true);
                 break;
             default:
@@ -77,18 +91,18 @@ public class RadioGroupView extends ConstraintLayout {
         }
     }
 
-    @WHICH_CHECKED
+    @WHICH_ITEM
     public int isChecked() {
 
         if (rbFalse.isChecked()) {
-            return CHECK_FALSE;
+            return ITEM_FALSE;
         } else if (rbTrue.isChecked()) {
-            return CHECK_TRUE;
+            return ITEM_TRUE;
         } else if (rbSuper.isChecked()) {
-            return CHECK_SUPER;
+            return ITEM_SUPER;
         } else {
             //default:super.XX
-            return CHECK_SUPER;
+            return ITEM_SUPER;
         }
 
     }

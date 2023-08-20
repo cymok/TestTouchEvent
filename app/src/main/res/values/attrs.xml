@@ -8,5 +8,11 @@
             <enum name="checkTrue" value="1"/>
             <enum name="checkFalse" value="2"/>
         </attr>
+        <attr name="defaultItem" format="enum" >
+            <enum name="defaultSuper" value="0"/>
+            <enum name="defaultTrue" value="1"/>
+            <enum name="defaultFalse" value="2"/>
+        </attr>
+        <attr name="hideSuper" format="boolean"/>
     </declare-styleable>
 </resources>

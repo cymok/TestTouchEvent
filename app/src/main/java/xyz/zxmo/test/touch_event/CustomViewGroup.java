@@ -41,9 +41,9 @@ public class CustomViewGroup extends ConstraintLayout {
 
         MainActivity activity = (MainActivity) getContext();
         int checked = activity.mViewHolder.viewGroupDispatch.isChecked();
-        if (checked == RadioGroupView.CHECK_TRUE) {
+        if (checked == RadioGroupView.ITEM_TRUE) {
             return true;
-        } else if (checked == RadioGroupView.CHECK_FALSE) {
+        } else if (checked == RadioGroupView.ITEM_FALSE) {
             return false;
         } else {
             return super.dispatchTouchEvent(event);
@@ -72,9 +72,9 @@ public class CustomViewGroup extends ConstraintLayout {
 
         MainActivity activity = (MainActivity) getContext();
         int checked = activity.mViewHolder.viewGroupIntercept.isChecked();
-        if (checked == RadioGroupView.CHECK_TRUE) {
+        if (checked == RadioGroupView.ITEM_TRUE) {
             return true;
-        } else if (checked == RadioGroupView.CHECK_FALSE) {
+        } else if (checked == RadioGroupView.ITEM_FALSE) {
             return false;
         } else {
             return super.onInterceptTouchEvent(event);
@@ -103,9 +103,9 @@ public class CustomViewGroup extends ConstraintLayout {
 
         MainActivity activity = (MainActivity) getContext();
         int checked = activity.mViewHolder.viewGroupEvent.isChecked();
-        if (checked == RadioGroupView.CHECK_TRUE) {
+        if (checked == RadioGroupView.ITEM_TRUE) {
             return true;
-        } else if (checked == RadioGroupView.CHECK_FALSE) {
+        } else if (checked == RadioGroupView.ITEM_FALSE) {
             return false;
         } else {
             return super.onTouchEvent(event);
