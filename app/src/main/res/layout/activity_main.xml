@@ -43,6 +43,7 @@
     </ScrollView>
 
     <ScrollView
+        android:id="@+id/sv_switch"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/holo_blue_dark"
@@ -56,74 +57,87 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <xyz.zxmo.test.touch_event.RadioGroupView
+            <com.example.test.touch_event.RadioGroupView
                 android:id="@+id/activity_dispatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:defaultItem="defaultSuper"
-                app:title="Activity.dispatchTouchEvent"
+                app:title="Activity#dispatchTouchEvent"
                 app:whichChecked="checkSuper" />
 
-            <xyz.zxmo.test.touch_event.RadioGroupView
+            <com.example.test.touch_event.RadioGroupView
                 android:id="@+id/view_group_dispatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:defaultItem="defaultSuper"
-                app:title="ViewGroup.dispatchTouchEvent"
+                app:title="ViewGroup#dispatchTouchEvent"
                 app:whichChecked="checkSuper" />
 
-            <xyz.zxmo.test.touch_event.RadioGroupView
+            <com.example.test.touch_event.RadioGroupView
                 android:id="@+id/view_group_intercept"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:defaultItem="defaultFalse"
-                app:title="ViewGroup.onInterceptTouchEvent"
+                app:title="ViewGroup#onInterceptTouchEvent"
                 app:whichChecked="checkSuper" />
 
-            <xyz.zxmo.test.touch_event.RadioGroupView
+            <com.example.test.touch_event.RadioGroupView
                 android:id="@+id/view_dispatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:defaultItem="defaultSuper"
-                app:title="View.dispatchTouchEvent"
+                app:title="View#dispatchTouchEvent"
                 app:whichChecked="checkSuper" />
 
-            <xyz.zxmo.test.touch_event.RadioGroupView
+            <com.example.test.touch_event.RadioGroupView
                 android:id="@+id/view_event_listener"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:defaultItem="defaultFalse"
-                app:hideSuper="true"
-                app:title="View.setOnTouchListener"
-                app:whichChecked="checkFalse" />
+                app:title="View.setOnTouchListener#onTouch"
+                app:whichChecked="checkSuper" />
 
-            <xyz.zxmo.test.touch_event.RadioGroupView
+            <com.example.test.touch_event.RadioGroupView
                 android:id="@+id/view_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:defaultItem="defaultTrue"
-                app:title="View.onTouchEvent"
+                app:title="View#onTouchEvent"
                 app:whichChecked="checkSuper" />
 
-            <xyz.zxmo.test.touch_event.RadioGroupView
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View.setOnClickListener#onClick\nvoid" />
+
+            <com.example.test.touch_event.RadioGroupView
                 android:id="@+id/view_group_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:defaultItem="defaultFalse"
-                app:title="ViewGroup.onTouchEvent"
+                app:title="ViewGroup#onTouchEvent"
                 app:whichChecked="checkSuper" />
 
-            <xyz.zxmo.test.touch_event.RadioGroupView
+            <com.example.test.touch_event.RadioGroupView
                 android:id="@+id/activity_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:defaultItem="defaultFalse"
-                app:title="Activity.onTouchEvent"
+                app:title="Activity#onTouchEvent"
                 app:whichChecked="checkSuper" />
 
         </LinearLayout>
 
     </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="event\nflow\n↓\n↓\n↓\n.\n.\n."
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@id/sv_switch"
+        app:layout_constraintTop_toTopOf="@id/sv_switch" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -137,7 +151,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line_center_horizontal" />
 
-    <xyz.zxmo.test.touch_event.CustomViewGroup
+    <com.example.test.touch_event.CustomViewGroup
         android:id="@+id/viewGroup"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -164,7 +178,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <xyz.zxmo.test.touch_event.CustomView
+        <com.example.test.touch_event.CustomView
             android:id="@+id/view"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -180,6 +194,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </xyz.zxmo.test.touch_event.CustomViewGroup>
+    </com.example.test.touch_event.CustomViewGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

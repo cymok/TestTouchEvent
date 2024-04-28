@@ -1,4 +1,4 @@
-package xyz.zxmo.test.touch_event;
+package com.example.test.touch_event;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -50,7 +50,6 @@ public class RadioGroupView extends ConstraintLayout {
         String title = typedArray.getString(R.styleable.RadioGroupView_title);
         int whichChecked = typedArray.getInt(R.styleable.RadioGroupView_whichChecked, -1);
         int defaultItem = typedArray.getInt(R.styleable.RadioGroupView_defaultItem, -1);
-        boolean hideSuper = typedArray.getBoolean(R.styleable.RadioGroupView_hideSuper, false);
         typedArray.recycle();
 
         ((TextView) findViewById(R.id.tv_title)).setText(title);
@@ -68,10 +67,6 @@ public class RadioGroupView extends ConstraintLayout {
             rbFalse.setTextColor(Color.BLUE);
         } else if(defaultItem == ITEM_SUPER) {
             rbSuper.setTextColor(Color.BLUE);
-        }
-
-        if (hideSuper) {
-            rbSuper.setVisibility(View.INVISIBLE);
         }
     }
 

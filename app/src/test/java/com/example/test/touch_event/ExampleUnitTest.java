@@ -1,4 +1,4 @@
-package xyz.zxmo.test.touch_event;
+package com.example.test.touch_event;
 
 import org.junit.Test;
 

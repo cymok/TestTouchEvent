@@ -1,29 +1,22 @@
-package xyz.zxmo.test.touch_event;
+package com.example.test.touch_event;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
-@SuppressLint("AppCompatCustomView")
-public class CustomView extends TextView {
-    public CustomView(Context context) {
+public class CustomViewGroup extends ConstraintLayout {
+    public CustomViewGroup(Context context) {
         super(context);
     }
 
-    public CustomView(Context context, @Nullable AttributeSet attrs) {
+    public CustomViewGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CustomViewGroup(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-    }
-
-    public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     @Override
@@ -34,7 +27,7 @@ public class CustomView extends TextView {
         }
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                MainActivity.sendLog(getContext(), TAG, "dispatchTouchEvent:  down");
+                MainActivity.sendLog(getContext(), TAG, "dispatchTouchEvent: down");
                 break;
             case MotionEvent.ACTION_MOVE:
                 MainActivity.sendLog(getContext(), TAG, "dispatchTouchEvent: move");
@@ -47,13 +40,44 @@ public class CustomView extends TextView {
 //        return super.dispatchTouchEvent(event);
 
         MainActivity activity = (MainActivity) getContext();
-        int checked = activity.mViewHolder.viewDispatch.isChecked();
+        int checked = activity.mViewHolder.viewGroupDispatch.isChecked();
         if (checked == RadioGroupView.ITEM_TRUE) {
             return true;
         } else if (checked == RadioGroupView.ITEM_FALSE) {
             return false;
         } else {
             return super.dispatchTouchEvent(event);
+        }
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent event) {
+        MainActivity mainActivity = (MainActivity) getContext();
+        if (!mainActivity.isInside(event, mainActivity)) {
+            return super.onInterceptTouchEvent(event);
+        }
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                MainActivity.sendLog(getContext(), TAG, "onInterceptTouchEvent: down");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                MainActivity.sendLog(getContext(), TAG, "onInterceptTouchEvent: move");
+                break;
+            case MotionEvent.ACTION_UP:
+                MainActivity.sendLog(getContext(), TAG, "onInterceptTouchEvent: up");
+                break;
+            default:
+        }
+//        return super.onInterceptTouchEvent(event);
+
+        MainActivity activity = (MainActivity) getContext();
+        int checked = activity.mViewHolder.viewGroupIntercept.isChecked();
+        if (checked == RadioGroupView.ITEM_TRUE) {
+            return true;
+        } else if (checked == RadioGroupView.ITEM_FALSE) {
+            return false;
+        } else {
+            return super.onInterceptTouchEvent(event);
         }
     }
 
@@ -78,7 +102,7 @@ public class CustomView extends TextView {
 //        return super.onTouchEvent(event);
 
         MainActivity activity = (MainActivity) getContext();
-        int checked = activity.mViewHolder.viewEvent.isChecked();
+        int checked = activity.mViewHolder.viewGroupEvent.isChecked();
         if (checked == RadioGroupView.ITEM_TRUE) {
             return true;
         } else if (checked == RadioGroupView.ITEM_FALSE) {
@@ -88,5 +112,5 @@ public class CustomView extends TextView {
         }
     }
 
-    private static final String TAG = "View";
+    private static final String TAG = "ViewGroup";
 }

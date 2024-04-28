@@ -13,6 +13,6 @@
             <enum name="defaultTrue" value="1"/>
             <enum name="defaultFalse" value="2"/>
         </attr>
-        <attr name="hideSuper" format="boolean"/>
     </declare-styleable>
+
 </resources>
